@@ -1,4 +1,3 @@
-
 const express = require("express");
 const app = express();
 const dreams = [
@@ -22,17 +21,17 @@ const listener = app.listen(process.env.PORT, () => {
 const fs = require("fs");
 const Discord = require ("discord.js")
 const moment = require ("moment")
-const client = new Discord.Client();
+const JANO = new Discord.Client();
 const prefix = "j!";
 
 
-client.login("");
-client.on("ready", async () => {
-  console.log(`Logged in as ${client.user.username}!`);
-  client.user.setStatus("ONLINE");
-  client.user.setActivity(`j!help`, { type: "WATCHING" });
-  client.guilds.cache.forEach(g => {
-    if (g.member(client.user).hasPermission("ADMINISTRATOR")) {
+JANO.login("Nzk0NDYwNTE1MzE3MTg2NTcw.X-7JAw.GwPxE4-mYnzEkYGYMdUJ13ooxTk");
+JANO.on("ready", async () => {
+  console.log(`Logged in as ${JANO.user.username}!`);
+  JANO.user.setStatus("ONLINE");
+  JANO.user.setActivity(`j!help`, { type: "WATCHING" });
+  JANO.guilds.cache.forEach(g => {
+    if (g.member(JANO.user).hasPermission("ADMINISTRATOR")) {
       g.fetchInvites().then(guildInvites => {});
     }
   });
@@ -44,7 +43,7 @@ client.on("ready", async () => {
 
 
 
-client.on("message", message => {
+JANO.on("message", message => {
   if (message.content === prefix + "about") {
     const embed = new Discord.MessageEmbed()
     .setDescription(`                         
@@ -54,11 +53,11 @@ client.on("message", message => {
 **[ click here ](https://discord.gg/3wykSpqjZq)**`)
       .setColor("BLACK")
     
-      .addField("`my name`", `** ${client.user.tag} **`, true)
+      .addField("`my name`", `** ${JANO.user.tag} **`, true)
 
-      .addField("`Server`", `**${client.guilds.cache.size} Server**`, true)
+      .addField("`Server`", `**${JANO.guilds.cache.size} Server**`, true)
     
-     .addField("`Usres`",  `**${client.users.cache.size}  Users**`, true)
+     .addField("`Usres`",  `**${JANO.users.cache.size}  Users**`, true)
     
     
      .addField( "`developer bot` ",`<@681553671364018196>`,true)
@@ -74,7 +73,7 @@ client.on("message", message => {
 
 
 
-client.on("message", message => {
+JANO.on("message", message => {
   if (message.content === prefix + "invite") {
     if (!message.channel.guild)
       return message.reply(
@@ -99,21 +98,21 @@ client.on("message", message => {
 ////// code invite vr 12 by jano///////
 const invites = {};
 const wait = require("util").promisify(setTimeout);
-client.on("ready", () => {
+JANO.on("ready", () => {
   wait(1000);
-  client.guilds.cache.forEach(g => {
+  JANO.guilds.cache.forEach(g => {
     g.fetchInvites().then(guildInvites => {
       invites[g.id] = guildInvites;
     });
   }); 
 });
 ///////////////////
-client.on("guildMemberAdd", member => {
+JANO.on("guildMemberAdd", member => {
   member.guild.fetchInvites().then(guildInvites => {
     const gamer = invites[member.guild.id];
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
-    const inviter = client.users.cache.get(invite.inviter.id);
+    const inviter = JANO.users.cache.get(invite.inviter.id);
     const channel = member.guild.channels.cache.find(
       channel => channel.name === "𝐈𝐧𝐯𝐢𝐭𝐞𝐬" 
     );
@@ -122,10 +121,3 @@ client.on("guildMemberAdd", member => {
     );
   });
 });
-////////////////
-
-
-
-
-
-
