@@ -1,7 +1,6 @@
 {
-  "name": "jano",
+  "name": "invite manager",
   "version": "0.0.1",
-  "description": "Hyper staff",
   "main": "jano.js",
   "scripts": {
     "start": "node jano.js"
