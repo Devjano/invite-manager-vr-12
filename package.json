@@ -1,5 +1,4 @@
 {
-  "name": "invite manager",
   "version": "0.0.1",
   "main": "jano.js",
   "scripts": {
